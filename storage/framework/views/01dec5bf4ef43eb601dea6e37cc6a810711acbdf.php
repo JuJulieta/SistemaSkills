@@ -1,0 +1,30 @@
+<div class="table-responsive">
+    <table class="table" id="lineaServicios-table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php $__currentLoopData = $lineaServicios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lineaServicio): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <tr>
+                <td><?php echo e($lineaServicio->lsv_nombre); ?></td>
+                <td>
+                    <?php echo Form::open(['route' => ['lineaServicios.destroy', $lineaServicio->lsv_id], 'method' => 'delete']); ?>
+
+                    <div class='btn-group'>
+                        <a href="<?php echo e(route('lineaServicios.show', [$lineaServicio->lsv_id])); ?>" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                        <a href="<?php echo e(route('lineaServicios.edit', [$lineaServicio->lsv_id])); ?>" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                        <?php echo Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Estás seguro?')"]); ?>
+
+                    </div>
+                    <?php echo Form::close(); ?>
+
+                </td>
+            </tr>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </tbody>
+    </table>
+</div>
+<?php /**PATH C:\xampp\htdocs\sistema_skills\resources\views/linea_servicios/table.blade.php ENDPATH**/ ?>
